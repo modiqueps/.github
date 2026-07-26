@@ -7,13 +7,13 @@ Version 1.0
 ## 1. Definitions
 
 - **"Software"** means the source code, assets, documentation, and any other files distributed in this repository.
-- **"ModiquePS"** means Modique Project Studios, the organization publishing the Software, and any project produced under its umbrella.
+- **"Modique Project Studios"** means Modique Project Studios, the organization publishing the Software, and any project produced under its umbrella.
 - **"Member"** means an individual or entity recognized by ModiquePS as part of the organization at the time of use.
 - **"Authorized Party"** means any person or entity granted rights under this license in writing by ModiquePS, beyond its Members.
 
 ## 2. Scope
 
-This license applies to the Software as published by ModiquePS, in this repository and any other repository that references MODQ-1.0.
+This license applies to the Software as published by Modique Project Studios, in this repository and any other repository that references MODQ-1.0.
 
 ## 3. Grant of Rights
 
