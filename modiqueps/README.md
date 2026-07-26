@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./ModiqueGif.svg" width="100%" alt="Modique Project Studios" />
+  <img src="./assets/ModiqueGif.svg" width="100%" alt="Modique Project Studios" />
 </p>
 
 # Modique Project Studios (ModiquePS)
