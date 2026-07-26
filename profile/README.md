@@ -27,4 +27,4 @@ See the `LICENSE` file in each repository for the full terms.
 
 ## Contributing
 
-Contributions are currently limited to ModiquePS members. If you're interested in collaborating, reach out first rather than opening an unsolicited pull request.
+Contributions are currently limited to Modique Project Studios members. If you're interested in collaborating, reach out first rather than opening an unsolicited pull request.
