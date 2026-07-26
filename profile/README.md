@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/ModiqueBanner.png" width="100%" alt="Modique Project Studios" />
+  <img src="../assets/ModiqueBanner.png" width="100%" alt="Modique Project Studios" />
 </p>
 
 # Modique Project Studios (ModiquePS)
