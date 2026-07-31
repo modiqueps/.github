@@ -2,7 +2,7 @@
   <img src="../assets/ModiqueGif.svg" width="100%" alt="Modique Project Studios" />
 </p>
 
-# Modique Project Studios (https://modiqueps.com - Modiqueps)
+# [Modique Project Studios](https://modiqueps.com)
 
 **Modique Project Studios** is a project production studio — not a single product. Modique itself is one of the projects we produce; the studio's scope covers everything we build under it, across any medium or product type.
 
