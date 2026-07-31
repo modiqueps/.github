@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300"
+     role="img" aria-label="Sonsuz döngüde animasyon">
+  <title>Sonsuz döngüde animasyon</title>
+
+  <defs>
+    <!--
+      Tek bir kapalı kontur. Başlangıç noktası üst kenarın ortasında (450.8, 46.8);
+      yön: sola, sonra merdivenden aşağı, alt kutunun etrafından, ve iki köşegenle
+      sağ uca. Z kapanışı üst kenar boyunca başlangıca döner.
+      pathLength=1000 -> tüm dash matematiği binde cinsinden.
+    -->
+    <path id="mark" pathLength="1000" d="
+      M 450.8 46.8
+      H 405.1
+      V 113.0
+      H 353.2  A 9.6 9.6 0 0 0 343.6 122.6
+      V 179.9
+      H 287.0  A 9.6 9.6 0 0 0 277.4 189.5
+      V 243.9  A 9.6 9.6 0 0 0 287.0 253.5
+      H 341.7  A 9.6 9.6 0 0 0 351.3 243.9
+      V 187.0
+      H 408.0  A 9.6 9.6 0 0 0 417.6 177.4
+      V 124.2
+      L 624.2 251.6
+      L 483.4 46.8
+      Z" />
+
+    <!-- Neon hâle: üç ayrı yarıçapta bulanıklık üst üste bindirilir. -->
+    <filter id="neon" x="-25%" y="-35%" width="150%" height="170%"
+            filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="22"  result="far" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7"   result="mid" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.3" result="near" />
+      <feMerge>
+        <feMergeNode in="far" />
+        <feMergeNode in="far" />
+        <feMergeNode in="mid" />
+        <feMergeNode in="near" />
+        <feMergeNode in="SourceGraphic" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <style><![CDATA[
+      /*
+        --head : çizim başının yol üzerindeki konumu (binde). 0 -> 2870, yani
+                 yarım döngüde konturun 2.87 turu. Hafif bir hızlanma içerir.
+        --span : baştan geriye uzanan kuyruğun toplam uzunluğu (binde).
+        --lift : döngü ucunda kuyruğun sönümünü kapatıp konturu tümüyle yakar.
+      */
+      @property --head { syntax: "<number>"; inherits: true; initial-value: 0; }
+      @property --span { syntax: "<number>"; inherits: true; initial-value: 0; }
+      @property --lift { syntax: "<number>"; inherits: true; initial-value: 0; }
+
+      .mark { animation: sweep 8.76s linear infinite alternate; }
+
+      @keyframes sweep {
+        0%    { --head:    0; --span:   0; --lift: 0; }
+        10%   { --head:  218; --span: 218; --lift: 0; }
+        20%   { --head:  526; --span: 526; --lift: 0; }
+        30%   { --head:  810; --span: 810; --lift: 0; }
+        40%   { --head: 1041; --span: 810; --lift: 0; }
+        50%   { --head: 1277; --span: 810; --lift: 0; }
+        60%   { --head: 1579; --span: 810; --lift: 0; }
+        70%   { --head: 1863; --span: 810; --lift: 0; }
+        80%   { --head: 2168; --span: 810; --lift: 0; }
+        90%   { --head: 2525; --span: 810; --lift: 0; }
+        93%   { --head: 2629; --span: 810; --lift: 0; }
+        100%  { --head: 2870; --span:1000; --lift: 1; }
+      }
+
+      /*
+        Her katman kuyruğun bir dilimini kaplar: --f, kuyruk uzunluğunun oranı.
+        Hepsi baş noktasında biter, geriye doğru farklı mesafelerde durur; üst üste
+        binen opaklıklar baştan kuyruğa doğru düzgün bir sönüm merdiveni üretir.
+        Desenin periyodu tam olarak 1000 olduğu için tur başına kayma sürekli kalır.
+      */
+      .seg {
+        --len: calc(var(--span) * var(--f));
+        stroke-dasharray: calc(var(--len) * 1px) calc((1000 - var(--len)) * 1px);
+        stroke-dashoffset: calc((var(--len) - var(--head)) * 1px);
+        stroke-opacity: calc(var(--a) + (1 - var(--a)) * var(--lift));
+      }
+
+      .s1 { --f: 1.00; --a: 0.11; stroke-width: 1.5; }
+      .s2 { --f: 0.92; --a: 0.15; stroke-width: 1.6; }
+      .s3 { --f: 0.83; --a: 0.20; stroke-width: 1.7; }
+      .s4 { --f: 0.75; --a: 0.25; stroke-width: 1.8; }
+      .s5 { --f: 0.67; --a: 0.33; stroke-width: 1.9; }
+      .s6 { --f: 0.58; --a: 0.52; stroke-width: 2.0; }
+      .s7 { --f: 0.50; --a: 1.00; stroke-width: 2.0; }
+
+      @media (prefers-reduced-motion: reduce) {
+        .mark { animation: none; --head: 2870; --span: 1000; --lift: 1; }
+      }
+    ]]></style>
+  </defs>
+
+  <rect width="900" height="300" fill="#0a0a0c" />
+
+  <g class="mark" filter="url(#neon)"
+     fill="none" stroke="#ffffff" stroke-linecap="butt" stroke-linejoin="round">
+    <use class="seg s1" href="#mark" />
+    <use class="seg s2" href="#mark" />
+    <use class="seg s3" href="#mark" />
+    <use class="seg s4" href="#mark" />
+    <use class="seg s5" href="#mark" />
+    <use class="seg s6" href="#mark" />
+    <use class="seg s7" href="#mark" />
+  </g>
+</svg>
