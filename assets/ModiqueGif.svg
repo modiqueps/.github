@@ -8,22 +8,26 @@
 >
   <title id="title">Modique loading animation</title>
   <desc id="desc">A glowing Modique mark is drawn in a continuous loop.</desc>
+
   <style>
     :root {
       --ink: #0a0a0c;
       --trace: rgba(255, 255, 255, 0.12);
       --neon: #f8fafc;
     }
+
     .base-trace,
     .neon-trace {
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+
     .base-trace {
       stroke: var(--trace);
       stroke-width: 9;
     }
+
     .neon-trace {
       stroke: var(--neon);
       stroke-width: 7;
@@ -31,26 +35,32 @@
       animation: draw 3.2s linear infinite;
       filter: url(#neon-glow);
     }
+
     .neon-trace--delayed {
       animation-delay: -1.6s;
     }
+
     .ambient-glow {
       animation: breathe 3.2s ease-in-out infinite;
       transform-origin: center;
     }
+
     @keyframes draw {
       from { stroke-dashoffset: 100; }
       to { stroke-dashoffset: 0; }
     }
+
     @keyframes breathe {
       0%, 100% { opacity: 0.18; transform: scale(0.94); }
       50% { opacity: 0.42; transform: scale(1.08); }
     }
+
     @media (prefers-reduced-motion: reduce) {
       .neon-trace,
       .ambient-glow { animation: none; }
     }
   </style>
+
   <defs>
     <filter id="neon-glow" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="3" result="blur-small" />
@@ -61,10 +71,12 @@
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
+
     <radialGradient id="background-glow" cx="50%" cy="50%" r="55%">
       <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.09" />
       <stop offset="100%" stop-color="#e2e8f0" stop-opacity="0" />
     </radialGradient>
+
     <!-- The complete Modique mark is split into two paths for a seamless chase. -->
     <path
       id="modique-mark-outer"
@@ -77,11 +89,14 @@
       pathLength="100"
     />
   </defs>
+
   <rect width="900" height="300" fill="var(--ink)" />
   <ellipse class="ambient-glow" cx="450" cy="150" rx="260" ry="150" fill="url(#background-glow)" />
+
   <g transform="translate(450 150) scale(0.68) translate(-328 -150)">
     <use href="#modique-mark-outer" class="base-trace" />
     <use href="#modique-mark-inner" class="base-trace" />
+
     <use href="#modique-mark-outer" class="neon-trace" />
     <use href="#modique-mark-inner" class="neon-trace neon-trace--delayed" />
   </g>
