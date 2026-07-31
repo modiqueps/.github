@@ -1,3 +1,31 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="900"
+  height="300"
+  viewBox="0 0 900 300"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Modique loading animation</title>
+  <desc id="desc">A glowing Modique mark is drawn in a continuous loop.</desc>
+  <style>
+    :root {
+      --ink: #0a0a0c;
+      --trace: rgba(255, 255, 255, 0.12);
+      --neon: #f8fafc;
+    }
+    .base-trace,
+    .neon-trace {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .base-trace {
+      stroke: var(--trace);
+      stroke-width: 9;
+    }
+    .neon-trace {
+      stroke: var(--neon);
       stroke-width: 7;
       stroke-dasharray: 20 80;
       animation: draw 3.2s linear infinite;
